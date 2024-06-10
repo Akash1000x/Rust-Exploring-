@@ -48,21 +48,40 @@
 // }
 
 // ---------------------------Implementing structs--------------------------
-struct Rect {
-    width: u32,
-    height: u32,
-}
+// struct Rect {
+//     width: u32,
+//     height: u32,
+// }
 
-impl Rect {
-    fn area(&self) -> u32 {
-        self.width * self.height
-    }
+// impl Rect {
+//     fn area(&self) -> u32 {
+//         self.width * self.height
+//     }
+// }
+
+// fn main() {
+//     let rect = Rect {
+//         width: 30,
+//         height: 50,
+//     };
+//     print!("The area of the rectangle is {}", rect.area());
+// }
+
+// --------------enums--------------------------------------------------------------/
+// Define an enum called Shape
+enum Direction {
+    North,
+    East,
+    South,
+    West,
 }
 
 fn main() {
-    let rect = Rect {
-        width: 30,
-        height: 50,
-    };
-    print!("The area of the rectangle is {}", rect.area());
+    let my_direction = Direction::North;
+    let new_direction = my_direction;
+    move_around(new_direction);
+}
+
+fn move_around(direction: Direction) {
+    // implements logic to move a character around
 }

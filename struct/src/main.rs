@@ -69,19 +69,47 @@
 
 // --------------enums--------------------------------------------------------------/
 // Define an enum called Shape
-enum Direction {
-    North,
-    East,
-    South,
-    West,
+// enum Direction {
+//     North,
+//     East,
+//     South,
+//     West,
+// }
+
+// fn main() {
+//     let my_direction = Direction::North;
+//     let new_direction = my_direction;
+//     move_around(new_direction);
+// }
+
+// fn move_around(direction: Direction) {
+//     // implements logic to move a character around
+// }
+
+// --------------------------pattern matching-----------------------------------------
+enum Shape {
+    Circle(f64),
+    Square(f64),
+    Rectangle(f64, f64),
+}
+
+// Function to calculate area based on the shape
+fn calculate_area(shape: Shape) -> f64 {
+    // calculates the area of the shape
+    match shape {
+        Shape::Circle(redius) => 3.14 * redius * redius,
+        Shape::Square(side) => side * side,
+        Shape::Rectangle(width, hight) => width * hight,
+    }
 }
 
 fn main() {
-    let my_direction = Direction::North;
-    let new_direction = my_direction;
-    move_around(new_direction);
-}
+    // Create instances of different shapes
+    let circle = Shape::Circle(5.0);
+    let square = Shape::Square(4.0);
+    let rectangle = Shape::Rectangle(3.0, 6.0);
 
-fn move_around(direction: Direction) {
-    // implements logic to move a character around
+    println!("Area of the circle is: {}", calculate_area(circle));
+    println!("Area of the squre is: {}", calculate_area(square));
+    println!("Area of the rectangle is: {}", calculate_area(rectangle));
 }

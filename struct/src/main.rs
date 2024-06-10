@@ -115,17 +115,36 @@
 // }
 
 // ---------------------------Erooorr handling-----------------------------------------
-use std::fs;
+// use std::fs;
 
-fn main() {
-    let res = fs::read_to_string("example.txt");
-    match res {
-        Ok(content) => {
-            println!("File content: {}", content);
-        }
-        Err(e) => {
-            println!("Error reading file: {}", e);
+// fn main() {
+//     let res = fs::read_to_string("example.txt");
+//     match res {
+//         Ok(content) => {
+//             println!("File content: {}", content);
+//         }
+//         Err(e) => {
+//             println!("Error reading file: {}", e);
+//         }
+//     }
+//     println!("Program continues...")
+// }
+
+// ---------------------Option-----------------------------------------
+
+fn find_first_a(s: String) -> Option<i32> {
+    for (index, character) in s.chars().enumerate() {
+        if character == 'a' {
+            return Some(index as i32);
         }
     }
-    println!("Program continues...")
+    return None;
+}
+
+fn main() {
+    let my_string = String::from("raman");
+    match find_first_a(my_string) {
+        Some(index) => println!("The letter 'a' is found at index: {}", index),
+        None => println!("The letter 'a' is not found in the string."),
+    }
 }

@@ -87,29 +87,45 @@
 // }
 
 // --------------------------pattern matching-----------------------------------------
-enum Shape {
-    Circle(f64),
-    Square(f64),
-    Rectangle(f64, f64),
-}
+// enum Shape {
+//     Circle(f64),
+//     Square(f64),
+//     Rectangle(f64, f64),
+// }
 
-// Function to calculate area based on the shape
-fn calculate_area(shape: Shape) -> f64 {
-    // calculates the area of the shape
-    match shape {
-        Shape::Circle(redius) => 3.14 * redius * redius,
-        Shape::Square(side) => side * side,
-        Shape::Rectangle(width, hight) => width * hight,
-    }
-}
+// // Function to calculate area based on the shape
+// fn calculate_area(shape: Shape) -> f64 {
+//     // calculates the area of the shape
+//     match shape {
+//         Shape::Circle(redius) => 3.14 * redius * redius,
+//         Shape::Square(side) => side * side,
+//         Shape::Rectangle(width, hight) => width * hight,
+//     }
+// }
+
+// fn main() {
+//     // Create instances of different shapes
+//     let circle = Shape::Circle(5.0);
+//     let square = Shape::Square(4.0);
+//     let rectangle = Shape::Rectangle(3.0, 6.0);
+
+//     println!("Area of the circle is: {}", calculate_area(circle));
+//     println!("Area of the squre is: {}", calculate_area(square));
+//     println!("Area of the rectangle is: {}", calculate_area(rectangle));
+// }
+
+// ---------------------------Erooorr handling-----------------------------------------
+use std::fs;
 
 fn main() {
-    // Create instances of different shapes
-    let circle = Shape::Circle(5.0);
-    let square = Shape::Square(4.0);
-    let rectangle = Shape::Rectangle(3.0, 6.0);
-
-    println!("Area of the circle is: {}", calculate_area(circle));
-    println!("Area of the squre is: {}", calculate_area(square));
-    println!("Area of the rectangle is: {}", calculate_area(rectangle));
+    let res = fs::read_to_string("example.txt");
+    match res {
+        Ok(content) => {
+            println!("File content: {}", content);
+        }
+        Err(e) => {
+            println!("Error reading file: {}", e);
+        }
+    }
+    println!("Program continues...")
 }
